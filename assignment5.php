@@ -1,4 +1,5 @@
 <?php
+
 $xmlDoc = new DOMDocument();
 $xmlDoc->load("SkierLogs.xml");
 global $dbh;
@@ -18,20 +19,20 @@ for ($i = 0; $i < $Clubs->length; $i++) {
     $names = $club->getElementsByTagName("Name");
     $name = $names->item(0)->nodeValue;
 
-$cities = $club->getElementsByTagName("City");
-$city = $cities->item(0)->nodeValue;
+    $cities = $club->getElementsByTagName("City");
+    $city = $cities->item(0)->nodeValue;
 
-$counties = $club->getElementsByTagName("County");
-$county = $counties->item(0)->nodeValue;
+    $counties = $club->getElementsByTagName("County");
+    $county = $counties->item(0)->nodeValue;
 
 
 
-$ins->bindParam(":id", $ID);
-$ins->bindParam(":Cname", $name);
-$ins->bindParam(":city", $city);
-$ins->bindParam(":county", $county);
+    $ins->bindParam(":id", $ID);
+    $ins->bindParam(":Cname", $name);
+    $ins->bindParam(":city", $city);
+    $ins->bindParam(":county", $county);
 
-$ins->execute();
+    $ins->execute();
 
 }
 $skiers = $xmlDoc->getElementsByTagName( "Skier" );
@@ -57,7 +58,7 @@ for ($i = 0; $i < $skiers->length; $i++) {
     $skIns->bindParam(":lName", $lastName);
     $skIns->bindParam(":DoB", $DoB);
 
-$skIns->execute();
+    $skIns->execute();
 
 }
 
@@ -105,3 +106,4 @@ for ($i = 0; $i < $belongs->length; $i++) {
 
 }
 ?>
+
